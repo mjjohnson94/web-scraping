@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<style>
+
+body{
+  background-color: rgb(255, 220, 159);
+}
+
+h1  {
+  padding-top: 10px;
+  font-size: 45px;
+  
+}
+
+img {
+  width: 600px;
+  padding-right: 25px;
+}
+
+.con-1  {
+  padding: 30px;
+  background-color: rgb(235, 107, 107);
+}
+
+.con-2  {
+  float: right;
+  padding-top: 50px;
+  
+}
+
+.con-3  {
+  padding-top: 20px;
+}
+
+
+.con-4  {
+  float:right;
+}
+
+img.card-img-bottom { 
+  width: 700px;
+  border-radius: 8px;
+
+
+}
+
+p.card-text  {
+  font-size: 35px;
+  padding-top: 5px;
+}
+
+
+h3  {
+  padding-left: 15px;
+  font-size: 35px;
+}
+
+h4{
+  font-size: 35px;
+}
+
+.dataframe  {
+  width: 500px;
+}
+
+</style>
+
+<body>
+
+<div class="container">
+    <div class="con-1">
+       <h1>Mission to Mars</h1>
+       <br>
+       <h4>Latest News:</h4>
+       <h2>{{ mars_data.news }}</h2>
+       <p>{{ mars_data.paragraph }}</p>
+       <br>
+       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Live Data!</a></p>
+    </div>
+</div>
+
+       <div class="container">
+            <div class="con-2">
+              <h2>Facts About Mars:</h2>
+              <p>{{ mars_data.mars_facts | safe}}</p>
+            </div>
+          </div>
+
+                <div class="container">
+                    <div class="con-3">
+                      <h2>Featured Image of Mars:</h2>
+                      <img src="{{ mars_data.featured_image[0] }}">
+                    </div>
+                  </div>
+
+                  <br>
+
+                  <div class="container">
+                    <div class="row">
+                    <div class="con-4">
+                      <h3>The Four Major Hemispheres of Mars:</h3>
+                      <br>
+                      {% for hemisphere in mars_data.hemispheres %}
+                            
+                              <img class="card-img-bottom" src="{{ hemisphere.image_url }}">
+                              <div class="card-body">
+                                  <p class="card-text">{{ hemisphere.title }}</p>
+                                  <br>
+                
+                      {% endfor %}
+                    </div>
+                </div>
+                </div>
+                
+              
+ 
+ 
+      </body>
+      </html>
+
+                   
+                 
